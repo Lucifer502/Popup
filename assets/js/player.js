@@ -7,6 +7,7 @@ window.addEventListener('message', async e => {
  let video_config_media = await getStreams(e.data.config_media);
  let url = e.data.href;
  let video_mp4_array = [];
+ let sources = [];
 
  console.log(video_config_media)
 
