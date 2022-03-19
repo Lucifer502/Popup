@@ -30,11 +30,42 @@ const r = { 0: '720p', 1: '1080p', 2: '480p', 3: '360p', 4: '240p' };
   }]
   })
 
+let download_iconPath = "assets/icon/download_icon.svg";
+    let download_id = "download-video-button";
+    let download_tooltipText = "Download";
+
+function download_Button() {
+      if (jwplayer().getEnvironment().OS.mobile == true) {
+        modal.style.height = "200px";
+        modal.style.overflow = "auto";
+      }
+      openModal.style.opacity = "1";
+      openModal.style.visibility = "visible";
+
+closeModal.addEventListener("click", function(e) {
+        openModal.style.opacity = "0";
+        openModal.style.visibility = "hidden"
+      })
+    }
+
+playerInstance.addButton(download_iconPath, download_tooltipText, download_Button, download_id);
+
+console.log('[CR Premium] Baixando sources:')
+      for (let id of [1, 0, 2, 3, 4])
+        linkDownload(id);
+// Definir URL e Tamanho na lista de download
+      for (let id of [1, 0, 2, 3, 4]) {
+        dlUrl[id].href = video_mp4_array[id];
+}
+
+
   jwplayer().on('ready', e => {
 
    document.body.querySelector(".loading_container").style.display = "none";
   });
  }
+
+
 
  function getAllOrigins(url) {
   return new Promise(async (resolve, reject) => {
