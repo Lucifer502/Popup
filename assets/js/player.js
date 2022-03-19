@@ -7,9 +7,13 @@ window.addEventListener('message', async e => {
  let video_config_media = await getStreams(e.data.config_media);
  let url = e.data.href;
  let video_mp4_array = [];
+ let user_lang = 'es-LA';
  let sources = [];
 
  console.log(video_config_media)
+
+ const streamlist = video_config_media['streams']
+ video_mp4_array = mp4ListFromStream(streamlist.adaptive_hls[user_lang].url);
 
  for (let idx of [1, 0, 2, 3, 4])
   sources.push({ file: video_mp4_array[idx], label: r[idx] + (idx < 2 ? '<sup><sup>HD</sup></sup>' : '') });
