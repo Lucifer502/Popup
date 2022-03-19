@@ -44,7 +44,7 @@ window.addEventListener('message', async e => {
   })
  }
 
- async function getStream(url) {
+ async function getStreams(url) {
   const episodeStream = JSON.parse(await getAllOrigins(url));
   return episodeStream;
  }
